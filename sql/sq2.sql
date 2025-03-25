@@ -1,7 +1,5 @@
 use dev_realtime_v1_danyu_shi;
 
-use dev_realtime_v1_danyu_shi;
-
 show tables ;
 
 desc ods_order_info;
@@ -369,10 +367,6 @@ insert overwrite table ads_sku_lv select month(create_time),
                                          a.sku_id,concat(round(sum(`if`(t1.single>=2,1,0))/count(distinct a.user_id),2),'%') from dws_with a,(
     select month(create_time) as month,sku_id,user_id,count(*) as single from dws_with group by month(create_time),sku_id,user_id
 )t1 where a.sku_id=t1.sku_id group by month(create_time),a.sku_id;
-
-
-
-
 
 
 
